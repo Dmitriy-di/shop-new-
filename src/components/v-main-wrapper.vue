@@ -1,36 +1,36 @@
 <template>
-  <div class='v-main-wrapper'>
-    <p> {{ title }}</p>
-    <v-catalog/>
-    <v-cart/>
+  <div class="v-main-wrapper">
+    <p>{{ title }}</p>
+    <v-catalog />
+    <v-cart />
   </div>
 </template>
 
 <script>
-import vCart from './v-cart.vue'
-import vCatalog from './v-catalog.vue'
+import vCart from "./v-cart.vue";
+import vCatalog from "./v-catalog.vue";
 export default {
-  name: 'v-main-wrapper',
+  name: "v-main-wrapper",
   components: {
     vCart,
-    vCatalog
+    vCatalog,
   },
   props: {},
-  data () {
+  data() {
     return {
-      title: 'hello folks'
-    }
+      title: "hello folks",
+    };
   },
   computed: {},
   methods: {},
   watch: {},
-  mounted () {
-    console.log('mounted is here')
-  }
-}
+  mounted() {
+    console.log("mounted is here");
+  },
+};
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .v-main-wrapper {
   display: flex;
   justify-content: space-between;

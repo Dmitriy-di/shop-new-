@@ -1,21 +1,21 @@
 <template>
-  <div id='app'>
+  <div id="app">
     <div>Hello my friend</div>
-    <vMainWrapper/>
+    <vMainWrapper />
   </div>
 </template>
 
 <script>
-import vMainWrapper from './components/v-main-wrapper.vue'
+import vMainWrapper from "./components/v-main-wrapper.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    vMainWrapper
-  }
-}
+    vMainWrapper,
+  },
+};
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
