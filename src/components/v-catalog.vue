@@ -1,7 +1,14 @@
 <template>
   <div class="v-catalog">
     <h1>Catalog</h1>
-    <vCatalogItem v-for="product in products" :key="product.article" />
+    <div class="v-catalog__wrap">
+      <vCatalogItem
+        v-for="product in products"
+        :key="product.article"
+        :product_data="product"
+        @sendDataPerant="showArticleFormChild"
+      />
+    </div>
   </div>
 </template>
 
@@ -79,7 +86,19 @@ export default {
       ],
     };
   },
+  methods: {
+    showArticleFormChild(data) {
+      console.log(data);
+    },
+  },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.v-catalog__wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+</style>

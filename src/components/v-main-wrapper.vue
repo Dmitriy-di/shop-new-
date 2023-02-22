@@ -1,6 +1,6 @@
 <template>
   <div class="v-main-wrapper">
-    <p>{{ title }}</p>
+    <h1>{{ title }}</h1>
     <v-catalog />
     <v-cart />
   </div>
@@ -18,7 +18,7 @@ export default {
   props: {},
   data() {
     return {
-      title: "hello folks",
+      title: "MY SHOP",
     };
   },
   computed: {},
@@ -32,13 +32,8 @@ export default {
 
 <style lang="scss">
 .v-main-wrapper {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  flex-basis: 25%;
-  align-items: center;
-  box-shadow: 3px 2px 3px 0 yellow;
-  padding: 24px;
-  margin: 15px;
+}
+h1 {
+  color: rgb(255, 230, 0);
 }
 </style>

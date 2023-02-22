@@ -1,5 +1,5 @@
 <template>
-  <div class="v-card-item">
+  <div class="v-cart-item">
     <p>{{ title }}</p>
     <v-catalog />
     <v-cart />
@@ -10,7 +10,7 @@
 import vCart from "./v-cart.vue";
 import vCatalog from "./v-catalog.vue";
 export default {
-  name: "v-card-item",
+  name: "v-cart-item",
   components: {
     vCart,
     vCatalog,
@@ -31,11 +31,6 @@ export default {
 </script>
 
 <style lang="scss">
-.card-item {
-  display: flex;
-  justify-content: space-between;
-  max-width: 900px;
-  margin: 0 auto;
-  align-items: center;
+.v-cart-item {
 }
 </style>
