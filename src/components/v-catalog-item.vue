@@ -1,6 +1,7 @@
 <template>
   <div class="v-catalog-item">
     <img
+      class="v-catalog-item__image"
       :src="require('../assets/images/' + product_data.image)"
       alt="not found"
     />
@@ -8,7 +9,7 @@
     <p class="v-catalog-item__price">{{ product_data.price }}</p>
     <p class="v-catalog-item__name">{{ product_data.about }}</p>
     <p class="v-catalog-item__name">{{ product_data.category }}</p>
-    <button class="v-catalog-item__add_to_cart_btn" @click="sendDataPerant">
+    <button class="v-catalog-item__add_to_cart_btn" @click="addToCart">
       Add to cart
     </button>
   </div>
@@ -29,15 +30,21 @@ export default {
     return {};
   },
   methods: {
-    sendDataPerant() {
-      this.$emit("sendDataPerant", this.product_data.article);
+    addToCart() {
+      this.$emit("addToCart", this.product_data);
     },
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .v-catalog-item {
+  button {
+    margin: 10px 0;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background-color: #d2ff08;
+  }
   p {
     margin: 20px 0;
   }

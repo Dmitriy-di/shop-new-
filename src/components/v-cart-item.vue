@@ -1,28 +1,49 @@
 <template>
   <div class="v-cart-item">
-    <p>{{ title }}</p>
-    <v-catalog />
-    <v-cart />
+    <img
+      class="v-cart-item__image"
+      :src="require('../assets/images/' + cart_item_data.image)"
+      alt="not found"
+    />
+    <div>
+      <p class="v-catalog-item__name">{{ cart_item_data.name }}</p>
+      <p class="v-catalog-item__price">{{ cart_item_data.price }}</p>
+      <p class="v-catalog-item__name">{{ cart_item_data.about }}</p>
+      <p class="v-catalog-item__name">{{ cart_item_data.category }}</p>
+    </div>
+    <div class="v-cart-item__quantity">
+      <div>
+        <span>Quantity</span>
+        <span>
+          {{ cart_item_data.quantity }}
+        </span>
+      </div>
+      <button @click="deleteFromCart">Delete</button>
+    </div>
   </div>
 </template>
 
 <script>
-import vCart from "./v-cart.vue";
-import vCatalog from "./v-catalog.vue";
 export default {
   name: "v-cart-item",
-  components: {
-    vCart,
-    vCatalog,
+  components: {},
+  props: {
+    cart_item_data: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
-  props: {},
   data() {
-    return {
-      title: "hello folks",
-    };
+    return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    deleteFromCart() {
+      this.$emit("deleteFromCart");
+    },
+  },
   watch: {},
   mounted() {
     console.log("mounted is here");
@@ -30,7 +51,30 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .v-cart-item {
+  &__quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  button {
+    margin: 10px 0;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background-color: #d2ff08;
+  }
+  p {
+    margin: 20px 0;
+  }
+  background-color: #635a27;
+  color: white;
+  flex-basis: 25%;
+  box-shadow: 0px 0px 10px 0 rgb(0, 0, 0);
+  padding: 24px;
+  margin: 15px;
+  &__img {
+    max-width: 100px;
+  }
 }
 </style>

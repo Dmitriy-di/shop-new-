@@ -3,10 +3,10 @@
     <h1>Catalog</h1>
     <div class="v-catalog__wrap">
       <vCatalogItem
-        v-for="product in products"
+        v-for="product in PRODUCTS"
         :key="product.article"
         :product_data="product"
-        @sendDataPerant="showArticleFormChild"
+        @addToCart="addToCart"
       />
     </div>
   </div>
@@ -14,6 +14,8 @@
 
 <script>
 import vCatalogItem from "./v-catalog-item.vue";
+// Импортируем данные из хранилища
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "v-catalog",
   components: {
@@ -23,10 +25,22 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    ...mapGetters(["PRODUCTS"]),
+  },
   methods: {
-    showArticleFormChild(data) {
-      console.log(data);
+    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
+
+    addToCart(data) {
+      this.ADD_TO_CART(data);
     },
+  },
+  mounted() {
+    this.GET_PRODUCTS_FROM_API().then((response) => {
+      if (response.data) {
+        console.log("Данные пришли");
+      }
+    });
   },
 };
 </script>
