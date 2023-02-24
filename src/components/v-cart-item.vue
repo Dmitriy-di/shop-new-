@@ -18,7 +18,7 @@
           {{ cart_item_data.quantity }}
         </span>
       </div>
-      <button @click="deleteFromCart">Delete</button>
+      <button @click="deleteFromCart" class="btn">Delete</button>
     </div>
   </div>
 </template>
@@ -75,6 +75,12 @@ export default {
   margin: 15px;
   &__img {
     max-width: 100px;
+  }
+  .btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
   }
 }
 </style>

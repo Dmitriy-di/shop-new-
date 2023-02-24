@@ -3,7 +3,8 @@
     <div class="v-catalog__header">
       <h1>Catalog</h1>
       <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
-        <div class="v-catolog__link_to_cart">cart:{{ CART.length }}</div>
+        <i class="medium material-icons">shopping_basket </i>
+        <div class="v-catolog__link_to_cart">{{ CART.length }}</div>
       </router-link>
     </div>
     <div class="v-catalog__wrap">

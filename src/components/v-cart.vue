@@ -1,8 +1,11 @@
 <template>
   <div class="v-cart">
-    <div class="v-catolog__link_to_cart">cart:{{ CART.length }}</div>
     <router-link :to="{ name: 'catalog' }">
-      <button>Back to Catalog</button>
+      <div class="v-catolog__link_to_cart">
+        <i class="medium material-icons">shopping_basket </i>
+        {{ CART.length }}
+      </div>
+      <button class="btn">Back to Catalog</button>
     </router-link>
     <h1>Cart</h1>
     <div class="v-cart__wrap">

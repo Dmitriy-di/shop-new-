@@ -39,6 +39,7 @@ export default {
 .v-main-wrapper {
   max-width: 1000px;
   padding: 20px;
+  margin: 0 auto;
 }
 h1 {
   color: rgb(255, 230, 0);

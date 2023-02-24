@@ -9,7 +9,7 @@
     <p class="v-catalog-item__price">{{ product_data.price }}</p>
     <p class="v-catalog-item__name">{{ product_data.about }}</p>
     <p class="v-catalog-item__name">{{ product_data.category }}</p>
-    <button class="v-catalog-item__add_to_cart_btn" @click="addToCart">
+    <button class="v-catalog-item__add_to_cart_btn btn" @click="addToCart">
       Add to cart
     </button>
   </div>
@@ -39,6 +39,9 @@ export default {
 
 <style scoped lang="scss">
 .v-catalog-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   button {
     margin: 10px 0;
     padding: 15px 30px;
@@ -56,6 +59,12 @@ export default {
   margin: 15px;
   &__img {
     max-width: 100px;
+  }
+  .btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
   }
 }
 </style>
