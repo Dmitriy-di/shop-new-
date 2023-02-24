@@ -1,6 +1,11 @@
 <template>
   <div class="v-catalog">
-    <h1>Catalog</h1>
+    <div class="v-catalog__header">
+      <h1>Catalog</h1>
+      <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
+        <div class="v-catolog__link_to_cart">cart:{{ CART.length }}</div>
+      </router-link>
+    </div>
     <div class="v-catalog__wrap">
       <vCatalogItem
         v-for="product in PRODUCTS"
@@ -26,7 +31,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["PRODUCTS"]),
+    ...mapGetters(["PRODUCTS", "CART"]),
   },
   methods: {
     ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
@@ -36,20 +41,31 @@ export default {
     },
   },
   mounted() {
-    this.GET_PRODUCTS_FROM_API().then((response) => {
-      if (response.data) {
-        console.log("Данные пришли");
-      }
-    });
+    this.GET_PRODUCTS_FROM_API();
+    // this.GET_PRODUCTS_FROM_API().then((response) => {
+    //   if (response.data) {
+    //     console.log("Данные пришли");
+    //   }
+    // });
   },
 };
 </script>
 
 <style lang="scss">
-.v-catalog__wrap {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
+.v-catalog {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__link_to_cart {
+    padding: 10px;
+  }
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
 </style>
