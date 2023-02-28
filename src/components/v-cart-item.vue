@@ -13,7 +13,7 @@
     </div>
     <div class="v-cart-item__quantity">
       <div>
-        <span>Quantity</span>
+        <span>Quantity </span>
         <span>
           {{ cart_item_data.quantity }}
         </span>

@@ -2,7 +2,11 @@
   <div class="v-main-wrapper">
     <h1>{{ title }}</h1>
     <!-- Чтобы все корректно отображалось и ничего не ломалось рекомендуется тег router-view помещать в тег keep-alive-->
-    <keep-alive><router-view></router-view></keep-alive>
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
     <!-- <v-catalog />
     <vCart v-if="CART.length" :cart_data="CART" /> -->
   </div>

@@ -39,11 +39,14 @@ export default createStore({
           return error
         })
     },
-    ADD_TO_CART({ commit }, product) {
-      commit('SET_CART', product)
+    ADD_TO_CART({ commit, getters }, product) {
+      if (!(getters.CART.map(item => item.article).includes(product.article))) {
+        commit('SET_CART', product)
+      }
     },
-    DELETE_FROM_CART({ commit }, index) {
-      commit('REMOVE_FROM_CART', index)
+    DELETE_FROM_CART({ commit, getters }, index) {
+      getters.CART[index].quantity -= 1
+      if (!(getters.CART[index].quantity)) commit('REMOVE_FROM_CART', index)
     }
   },
   modules: {

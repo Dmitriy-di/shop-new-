@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$emit("addToCart", this.product_data);
+      this.$emit("addToCart2", this.product_data);
     },
   },
 };
@@ -54,7 +54,7 @@ export default {
   background-color: #635a27;
   color: white;
   flex-basis: 25%;
-  box-shadow: 0px 0px 10px 0 rgb(0, 0, 0);
+  box-shadow: 0px 0px 10px 0 rgb(255, 209, 5);
   padding: 24px;
   margin: 15px;
   &__img {

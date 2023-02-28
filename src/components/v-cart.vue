@@ -3,7 +3,9 @@
     <router-link :to="{ name: 'catalog' }">
       <div class="v-catolog__link_to_cart">
         <i class="medium material-icons">shopping_basket </i>
-        {{ CART.length }}
+        <p class="v-cart__quantity">
+          {{ CART.reduce((sum, item) => sum + item.quantity, 0) }}
+        </p>
       </div>
       <button class="btn">Back to Catalog</button>
     </router-link>
@@ -67,6 +69,10 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+  &__quantity {
+    color: rgb(255, 248, 248);
+    font-size: 20px;
+  }
   &__wrap {
     display: flex;
     align-items: center;
