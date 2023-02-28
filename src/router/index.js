@@ -13,7 +13,6 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: vCart,
-    props: true
   }
 ]
 

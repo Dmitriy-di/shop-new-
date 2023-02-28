@@ -63,6 +63,10 @@ export default {
     padding: 15px 30px;
     border-radius: 10px;
     background-color: #d2ff08;
+    &:hover {
+      color: #d2ff08;
+      background-color: rgb(75, 74, 74);
+    }
   }
   p {
     margin: 20px 0;

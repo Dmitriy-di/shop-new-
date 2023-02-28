@@ -1,9 +1,9 @@
 <template>
   <div class="v-catalog">
     <div class="v-catalog__header">
-      <h1>Catalog</h1>
+      <h1 class="v-catalog__heading">Catalog</h1>
       <router-link :to="{ name: 'cart' }">
-        <i class="medium material-icons">shopping_basket </i>
+        <i class="v-catalog__icons medium material-icons">shopping_basket </i>
         <div class="v-catolog__link_to_cart">
           <p class="v-catalog__quantity">
             {{ CART.reduce((sum, item) => sum + item.quantity, 0) }}
@@ -39,7 +39,7 @@ import vCatalogItem from "./v-catalog-item.vue";
 // const vCatalogItem = defineAsyncComponent(() => import("./v-catalog-item.vue"));
 
 // Импортируем данные из хранилища
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 export default {
   name: "v-catalog",
   components: {
@@ -50,14 +50,15 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "CART"]),
+    ...mapGetters(["PRODUCTS", "CART", "TOTALSUM"]),
   },
   methods: {
     ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
-
+    ...mapMutations(["SET_TOTALSUM"]),
     addToCart(data) {
       data.quantity += 1;
       this.ADD_TO_CART(data);
+      this.SET_TOTALSUM(this.TOTALSUM + data.price);
     },
   },
   mounted() {
@@ -89,8 +90,10 @@ export default {
   }
   &__quantity {
     color: rgb(255, 248, 248);
-
     font-size: 20px;
+  }
+  &__heading {
+    margin: 0 auto;
   }
 }
 </style>

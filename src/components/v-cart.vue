@@ -24,13 +24,14 @@
         @deleteFromCart="deleteFromCart(index)"
       />
     </div>
+    <div class="v-cart__total-sum">Total sum = {{ TOTALSUM }}</div>
     <p v-if="!CART.length">You haven't got any products</p>
   </div>
 </template>
 
 <script>
 import vCartItem from "./v-cart-item.vue";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "v-cart",
@@ -46,14 +47,16 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["CART"]),
+    ...mapGetters(["CART", "TOTALSUM"]),
   },
   components: {
     vCartItem,
   },
   methods: {
     ...mapActions(["DELETE_FROM_CART"]),
+    ...mapMutations(["SET_TOTALSUM"]),
     deleteFromCart(index) {
+      this.SET_TOTALSUM(this.TOTALSUM - this.CART[index].price);
       this.DELETE_FROM_CART(index);
       console.log(index);
     },
@@ -78,6 +81,24 @@ export default {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+  }
+  button {
+    margin: 10px 0;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background-color: #d2ff08;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    &:hover {
+      color: #d2ff08;
+      background-color: rgb(75, 74, 74);
+    }
+  }
+  &__total-sum {
+    font-size: 30px;
+    color: #d2ff08;
   }
 }
 </style>

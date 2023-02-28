@@ -5,6 +5,7 @@ export default createStore({
   state: {
     products: [],
     cart: [],
+    totalSum: 0,
   },
   getters: {
     PRODUCTS(state) {
@@ -13,6 +14,9 @@ export default createStore({
     CART(state) {
       return state.cart
     },
+    TOTALSUM(state) {
+      return state.totalSum
+    },
   },
   mutations: {
     SET_PRODUCTS_TO_STATE: (state, products) => {
@@ -20,6 +24,9 @@ export default createStore({
     },
     SET_CART: (state, product) => {
       state.cart.push(product)
+    },
+    SET_TOTALSUM: (state, totalSum) => {
+      state.totalSum = totalSum
     },
     REMOVE_FROM_CART: (state, index) => {
       state.cart.splice(index, 1)

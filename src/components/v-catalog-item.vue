@@ -9,7 +9,10 @@
     <p class="v-catalog-item__price">{{ product_data.price }}</p>
     <p class="v-catalog-item__name">{{ product_data.about }}</p>
     <p class="v-catalog-item__name">{{ product_data.category }}</p>
-    <button class="v-catalog-item__add_to_cart_btn btn" @click="addToCart">
+    <button
+      class="waves-effect v-catalog-item__add_to_cart_btn btn"
+      @click="addToCart"
+    >
       Add to cart
     </button>
   </div>
@@ -47,9 +50,15 @@ export default {
     padding: 15px 30px;
     border-radius: 10px;
     background-color: #d2ff08;
+    &:hover {
+      color: #d2ff08;
+      background-color: rgb(75, 74, 74);
+    }
   }
   p {
     margin: 20px 0;
+    font-size: 18px;
+    color: #d2ff08;
   }
   background-color: #635a27;
   color: white;
