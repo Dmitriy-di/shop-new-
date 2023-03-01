@@ -22,6 +22,9 @@ export default createStore({
     SET_PRODUCTS_TO_STATE: (state, products) => {
       state.products = products
     },
+    SET_CART_NEW_PRODUCT: (state, newProducts) => {
+      state.products.unshift(newProducts)
+    },
     SET_CART: (state, product) => {
       state.cart.push(product)
     },
