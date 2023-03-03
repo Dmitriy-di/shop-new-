@@ -7,21 +7,14 @@
         <component :is="Component" />
       </keep-alive>
     </router-view>
-    <!-- <v-catalog />
-    <vCart v-if="CART.length" :cart_data="CART" /> -->
   </div>
 </template>
 
 <script>
-// import vCatalog from "./v-catalog.vue";
-// import vCart from "./v-cart.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "v-main-wrapper",
-  components: {
-    // vCart,
-    // vCatalog,
-  },
+  components: {},
   props: {},
   data() {
     return {
@@ -33,9 +26,6 @@ export default {
   },
   methods: {},
   watch: {},
-  mounted() {
-    console.log("mounted is here");
-  },
 };
 </script>
 

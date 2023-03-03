@@ -1,19 +1,22 @@
 <template>
   <div class="v-form" @click.self="closeModal" v-if="isVisible">
-    <form class="v-form__block">
+    <form @submit.prevent class="v-form__block">
       <input
+        @input="changeValid"
         v-model="price"
         class="v-form__input"
         type="text"
         placeholder="price"
       />
       <input
+        @input="changeValid"
         v-model="category"
         class="v-form__input"
         type="text"
         placeholder="category"
       />
       <input
+        @input="changeValid"
         v-model="about"
         class="v-form__input"
         type="text"
@@ -21,6 +24,7 @@
       />
       <input
         v-model="name"
+        @input="changeValid"
         class="v-form__input"
         type="text"
         placeholder="name"
@@ -32,7 +36,11 @@
       >
         Добавить
       </button> -->
-      <button class="v-form__btn-is-valid" @click="addToCatalog">
+      <button
+        :class="isValid ? 'v-form__btn-is-valid' : 'v-form__btn-not-is-valid'"
+        class="v-form__btn-is-valid"
+        @click="addToCatalog"
+      >
         Добавить
       </button>
     </form>
@@ -41,6 +49,7 @@
 
 <script>
 import { mapMutations } from "vuex";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   name: "v-form",
@@ -57,8 +66,10 @@ export default {
       about: "",
       name: "",
       fromObj: {},
+      isValid: false,
     };
   },
+  watch: {},
   computed: {},
   methods: {
     ...mapMutations(["SET_CART_NEW_PRODUCT"]),
@@ -72,16 +83,17 @@ export default {
         about: this.about,
         image: "1.png",
         name: this.name,
-        article: "T19",
+        article: uuidv4(),
         available: true,
         quantity: 0,
       };
-      console.log(this.fromObj);
       this.SET_CART_NEW_PRODUCT(this.fromObj);
     },
-    //  isValid() {
-    //    return Boolean(this.price && this.category && this.about);
-    //  },
+    changeValid() {
+      this.isValid = Boolean(
+        this.price && this.category && this.about && this.name
+      );
+    },
   },
 };
 </script>
@@ -93,7 +105,7 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,12 +128,12 @@ export default {
       color: #d2ff08;
       background-color: rgb(75, 74, 74);
     }
-    &[disabled] {
-      background-color: rgb(66, 66, 66);
-      color: red;
-      pointer-events: none;
-      border: 2px solid red;
-    }
+  }
+  &__btn-not-is-valid {
+    background-color: rgb(66, 66, 66) !important;
+    color: red;
+    pointer-events: none;
+    border: 2px solid red;
   }
 }
 </style>

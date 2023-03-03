@@ -11,12 +11,6 @@
     </router-link>
     <h1>Cart</h1>
     <div class="v-cart__wrap">
-      <!-- <vCartItem
-        v-for="(item, index) in cart_data"
-        :key="item.article"
-        :cart_item_data="item"
-        @deleteFromCart="deleteFromCart(index)"
-      /> -->
       <vCartItem
         v-for="(item, index) in CART"
         :key="item.article"
